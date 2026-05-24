@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Max Profit Problem</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Interview assignment</p>
+          <h1>Max Profit Problem</h1>
+          <p>
+            Choose the best mix of Theatre, Pub, and Commercial Park buildings
+            for a given number of time units.
+          </p>
+        </div>
+        <div class="earnings-card" aria-live="polite">
+          <span>Maximum earnings</span>
+          <strong id="maxEarnings">$0</strong>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Profit input controls">
+        <label for="timeInput">Time units</label>
+        <div class="input-row">
+          <input id="timeInput" type="number" min="0" value="13" />
+          <button id="calculateButton" type="button">Calculate</button>
+        </div>
+        <p id="errorMessage" class="error" role="alert"></p>
+      </section>
+
+      <section class="building-grid" aria-label="Building information">
+        <article>
+          <h2>Theatre</h2>
+          <dl>
+            <div><dt>Build time</dt><dd>5 units</dd></div>
+            <div><dt>Earnings</dt><dd>$1500/unit</dd></div>
+            <div><dt>Land</dt><dd>2x1</dd></div>
+          </dl>
+        </article>
+        <article>
+          <h2>Pub</h2>
+          <dl>
+            <div><dt>Build time</dt><dd>4 units</dd></div>
+            <div><dt>Earnings</dt><dd>$1000/unit</dd></div>
+            <div><dt>Land</dt><dd>1x1</dd></div>
+          </dl>
+        </article>
+        <article>
+          <h2>Commercial Park</h2>
+          <dl>
+            <div><dt>Build time</dt><dd>10 units</dd></div>
+            <div><dt>Earnings</dt><dd>$2000/unit</dd></div>
+            <div><dt>Land</dt><dd>3x1</dd></div>
+          </dl>
+        </article>
+      </section>
+
+      <section class="results" aria-label="Best solutions">
+        <div class="section-title">
+          <h2>Best Solutions</h2>
+          <p>All mixes that produce the same maximum profit are shown.</p>
+        </div>
+        <div id="solutionsList" class="solutions-list"></div>
+      </section>
+
+      <section class="test-cases" aria-label="Provided test cases">
+        <h2>Sample Cases</h2>
+        <div class="case-row">
+          <button class="case-button" type="button" data-time="7">n = 7</button>
+          <button class="case-button" type="button" data-time="8">n = 8</button>
+          <button class="case-button" type="button" data-time="13">n = 13</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Water Tank Problem</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Algorithm visualizer</p>
+          <h1>Water Tank Problem</h1>
+          <p class="summary">
+            Enter block heights and calculate how many units of water can be
+            stored between them.
+          </p>
+        </div>
+        <div class="result-panel" aria-live="polite">
+          <span>Total water</span>
+          <strong id="totalWater">18</strong>
+          <span>units</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Water tank input controls">
+        <label for="heightInput">Block heights</label>
+        <div class="input-row">
+          <input
+            id="heightInput"
+            type="text"
+            value="0,4,0,0,0,6,0,6,4,0"
+            spellcheck="false"
+            aria-describedby="inputHelp"
+          />
+          <button id="calculateButton" type="button">Calculate</button>
+        </div>
+        <p id="inputHelp" class="help">
+          Use comma-separated integers greater than or equal to 0.
+        </p>
+        <p id="errorMessage" class="error" role="alert"></p>
+      </section>
+
+      <section class="visual-section" aria-label="Tank visualization">
+        <div class="section-heading">
+          <div>
+            <h2>Blocks and Stored Water</h2>
+            <p>Yellow cells are blocks. Blue cells are trapped water.</p>
+          </div>
+        </div>
+        <div id="tankGrid" class="tank-grid"></div>
+      </section>
+
+      <section class="details" aria-label="Calculation details">
+        <h2>How it works</h2>
+        <ol>
+          <li>Find the tallest block on the left of each position.</li>
+          <li>Find the tallest block on the right of each position.</li>
+          <li>
+            Water above each block is
+            <code>min(leftMax, rightMax) - height</code>.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
