@@ -40,6 +40,25 @@ function getScheduleProfit(timeUnits, counts) {
   return profit;
 }
 
+function hasOnlyProfitableBuildings(timeUnits, counts) {
+  const schedule = [];
+
+  buildings.forEach((building, index) => {
+    for (let count = 0; count < counts[index]; count += 1) {
+      schedule.push(building);
+    }
+  });
+
+  schedule.sort((a, b) => b.earning / b.buildTime - a.earning / a.buildTime);
+
+  let elapsed = 0;
+
+  return schedule.every((building) => {
+    elapsed += building.buildTime;
+    return elapsed < timeUnits;
+  });
+}
+
 function findBestSolutions(timeUnits) {
   let bestProfit = 0;
   const bestSolutions = [];
@@ -59,6 +78,10 @@ function findBestSolutions(timeUnits) {
         }
 
         const profit = getScheduleProfit(timeUnits, counts);
+
+        if (profit === 0 || !hasOnlyProfitableBuildings(timeUnits, counts)) {
+          continue;
+        }
 
         if (profit > bestProfit) {
           bestProfit = profit;
